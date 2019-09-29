@@ -11,9 +11,20 @@ function renderTodos(args = {}) {
 
 describe("Todos", () => {
   describe("when renders", () => {
-    it("should contain one h1", () => {
+    it("should contain no todo", () => {
       const wrapper = renderTodos();
-      expect(wrapper.find("h1").length).toEqual(1);
+      expect(wrapper.find(".todo").length).toEqual(0);
+    });
+  });
+
+  describe("when Add button is click once", () => {
+    it("should contain one todo", () => {
+      const wrapper = renderTodos();
+      wrapper
+        .find("button")
+        .first()
+        .simulate("click");
+      expect(wrapper.find(".todo").length).toEqual(1);
     });
   });
 });
